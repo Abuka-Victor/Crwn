@@ -34,6 +34,7 @@ const SignUpForm = () => {
       );
 
       await createUserFromAuth(user, { displayName: name });
+
       resetFormFields();
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
