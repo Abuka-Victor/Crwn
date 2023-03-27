@@ -31,8 +31,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
 
@@ -40,7 +40,8 @@ provider.setCustomParameters({
 const db = getFirestore();
 
 export const auth = getAuth();
-export const SignInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const SignInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 
 export const createUserFromAuth = async (user, additionalInfo = {}) => {
   if (!user) return;
@@ -81,6 +82,6 @@ export const signInUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStateChangedLister = (callback) => {
+export const onAuthStateChangedListener = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
