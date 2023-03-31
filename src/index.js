@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { UserProvider } from './Contexts/User.context';
 import { ProductProvider } from './Contexts/Products.context';
-import { CartOpenProvider } from './Contexts/CartOpen.context';
+import { CartOpenProvider } from './Contexts/Cart.context';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';

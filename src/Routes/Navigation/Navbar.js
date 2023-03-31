@@ -6,14 +6,14 @@ import CartIcon from '../../Components/Cart-Icon/cart-icon.component';
 import CartDropdown from '../../Components/Cart-DropDown/cart-dropdown.component';
 
 import { userContext } from '../../Contexts/User.context';
-import { cartOpenContext } from '../../Contexts/CartOpen.context';
+import { cartContext } from '../../Contexts/Cart.context';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 import './navigation.styles.scss';
 
 const Navbar = () => {
   const { currentUser } = useContext(userContext);
-  const { open, setOpen } = useContext(cartOpenContext);
+  const { open, setOpen } = useContext(cartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
