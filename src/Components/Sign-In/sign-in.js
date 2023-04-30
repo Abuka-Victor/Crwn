@@ -4,7 +4,9 @@ import {
   signInUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
 
-import Button from '../../Components/Button/Button.component';
+import Button, {
+  BUTTON_CLASSES,
+} from '../../Components/Button/Button.component';
 import FormInput from '../../Components/Form-Input/form-input.component';
 import { useState } from 'react';
 
@@ -76,7 +78,7 @@ const SignIn = () => {
           <Button onClick={signInUserWithEmailAndPasswordHandler}>
             Sign In
           </Button>
-          <Button buttonType="google" onClick={logGoogleUser}>
+          <Button buttonType={BUTTON_CLASSES.google} onClick={logGoogleUser}>
             Sign In With Google
           </Button>
         </div>
