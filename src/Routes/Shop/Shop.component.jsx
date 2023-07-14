@@ -12,11 +12,14 @@ import CategoriesPreview from '../Categories-Preview/categories-preview.componen
 import Category from '../Category/category.component';
 import { useDispatch } from 'react-redux';
 
+import { fetchCategoryStart } from '../../Store/reducers/categories/categories.action';
+
 const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync());
+    // dispatch(fetchCategoriesAsync()); -> Thunk initializer for fetching categories from firebase
+    dispatch(fetchCategoryStart());
   });
 
   return (

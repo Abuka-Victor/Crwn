@@ -12,14 +12,15 @@ export const fetchCategorySuccess = (payload) =>
 export const fetchCategoryFailed = (payload) =>
   createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_FAILED, payload);
 
-export const fetchCategoriesAsync = () => {
-  return async (dispatch) => {
-    dispatch(fetchCategoryStart());
-    try {
-      const categoryMap = await getCategoriesAndDocuments();
-      dispatch(fetchCategorySuccess(categoryMap));
-    } catch (error) {
-      dispatch(fetchCategoryFailed(error));
-    }
-  };
-};
+// THUNK - To fetch categories from firebase
+// export const fetchCategoriesAsync = () => {
+//   return async (dispatch) => {
+//     dispatch(fetchCategoryStart());
+//     try {
+//       const categoryMap = await getCategoriesAndDocuments();
+//       dispatch(fetchCategorySuccess(categoryMap));
+//     } catch (error) {
+//       dispatch(fetchCategoryFailed(error));
+//     }
+//   };
+// };

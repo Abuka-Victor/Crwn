@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   createUserFromAuth,
   onAuthStateChangedListener,
+  getCurrentUser,
 } from './utils/firebase/firebase.utils';
 
 import { Routes, Route } from 'react-router-dom';
@@ -13,21 +14,27 @@ import Navbar from './Routes/Navigation/Navbar';
 import Auth from './Routes/Auth/auth';
 import Shop from './Routes/Shop/Shop.component';
 import Checkout from './Routes/Checkout/Checkout.component';
-import { setCurrentUser } from './Store/reducers/user/user.action';
+import {
+  checkUserSession,
+  setCurrentUser,
+} from './Store/reducers/user/user.action';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
+    // const unsubscribe = onAuthStateChangedListener((user) => {
+    //   if (user) {
+    //     createUserFromAuth(user);
+    //   }
+    //   dispatch(setCurrentUser(user));
+    // });
 
-    return unsubscribe;
-  }, [dispatch]);
+    // return unsubscribe;
+
+    // getCurrentUser().then((user) => console.log(user));
+    dispatch(checkUserSession());
+  }, []);
 
   return (
     <Routes>
