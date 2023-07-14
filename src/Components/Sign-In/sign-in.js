@@ -11,6 +11,11 @@ import FormInput from '../../Components/Form-Input/form-input.component';
 import { useState } from 'react';
 
 import './sign-in-form.styles.scss';
+import { useDispatch } from 'react-redux';
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from '../../Store/reducers/user/user.action';
 
 const defaultFields = {
   email: '',
@@ -18,11 +23,13 @@ const defaultFields = {
 };
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFields);
   const { email, password } = formFields;
 
   const logGoogleUser = async () => {
-    await SignInWithGooglePopup();
+    dispatch(googleSignInStart());
+    // await SignInWithGooglePopup();
   };
 
   const changeHandler = (event) => {
@@ -37,8 +44,8 @@ const SignIn = () => {
 
   const signInUserWithEmailAndPasswordHandler = async () => {
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-
+      // const response = await signInUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (err) {
       switch (err.code) {

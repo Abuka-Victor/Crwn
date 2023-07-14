@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../Store/reducers/user/user.selector';
 import { selectCartOpen } from '../../Store/reducers/cart/cart.selector';
 import { setOpen } from '../../Store/reducers/cart/cart.action';
+import { signOutStart } from '../../Store/reducers/user/user.action';
 
 const Navbar = () => {
   // const { currentUser } = useContext(userContext);
@@ -28,7 +29,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const signOutHandler = async () => {
-    await signOutUser();
+    // await signOutUser();
+    dispatch(signOutStart());
   };
   return (
     <Fragment>
